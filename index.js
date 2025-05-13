@@ -212,6 +212,17 @@ function updateDropdownMenu() {
     });
 }
 
+function initializeGroups() {
+    const groups = JSON.parse(localStorage.getItem('groups')) || [];
+    if (groups.length === 0) {
+        const defaultGroups = ['Друзья', 'Коллеги'];
+        localStorage.setItem('groups', JSON.stringify(defaultGroups));
+    }
+}
+
+initializeGroups();
+
+
 function loadGroups() {
     const groups = JSON.parse(localStorage.getItem('groups')) || [];
     groups.forEach(group => addGroup(group));
